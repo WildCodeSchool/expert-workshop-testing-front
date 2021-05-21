@@ -1,1 +1,1 @@
-Les tests unitaites, c'est la vie !
+Les tests, c'est la vie !
