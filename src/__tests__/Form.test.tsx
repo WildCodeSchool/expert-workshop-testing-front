@@ -54,7 +54,8 @@ test(
     async ()=>{
 
         render(<Form url={url} />);
-        fireEvent.click( screen.getByTestId("submit-btn")); 
+        
+        fireEvent.click( await screen.findByTestId("submit-btn") ); 
 
         await waitFor( ()=> screen.getByTestId("server-msg")); 
         expect( screen.queryByTestId("server-msg")).toHaveTextContent("OK");
