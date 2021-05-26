@@ -19,7 +19,7 @@ afterAll(() => server.close())
 
 
 test(
-    'has a submit button', 
+    'has mandatory fields and button', 
     async () => {
     render(<Form url={url} />);
     // on va demander à 'attendre' que l'élément qui porte le 'test-id' 'submit-btn' 
@@ -30,6 +30,18 @@ test(
             return screen.queryByTestId("submit-btn");
         }
     ); 
+
+    expect(screen.queryByTestId("username")).not.toBeNull();
+    expect(screen.queryByTestId("username")).toBeInstanceOf(HTMLInputElement);
+
+    expect(screen.queryByTestId("usersurname")).not.toBeNull();
+    expect(screen.queryByTestId("usersurname")).toBeInstanceOf(HTMLInputElement);
+
+    expect(screen.queryByTestId("usermail")).not.toBeNull();
+    expect(screen.queryByTestId("usermail")).toBeInstanceOf(HTMLInputElement);
+
+    expect(screen.queryByTestId("usermsg")).not.toBeNull();
+    expect(screen.queryByTestId("usermsg")).toBeInstanceOf(HTMLInputElement);
 
     expect(btn).not.toBeNull();
     expect(btn).toBeInstanceOf(HTMLButtonElement);
