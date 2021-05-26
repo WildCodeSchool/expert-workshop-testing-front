@@ -2,14 +2,19 @@ import { useEffect, useState } from "react";
 
 function Form(props:any){
 
-  const [display, setDisplay] = useState(false); 
-  const clickHandler = ()=>{
-    setDisplay(true);
+  const [msg, setMsg] = useState(""); 
+
+  const clickHandler = async ()=>{
+    if( props.url ){
+      const response = await fetch(props.url);
+      const data = await response.json();
+      setMsg(data.msg)
+    }
   }
 
   return (
     <div>
-      { display && <p data-testid="server-msg">OK</p>}
+      { msg !== "" && <p data-testid="server-msg">{msg}</p>}
       <input data-testid="username" type="text" />
       <input data-testid="usersurname" type="text" />
       <input data-testid="usermail" type="text" />

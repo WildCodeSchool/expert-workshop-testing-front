@@ -58,6 +58,17 @@ test(
         fireEvent.click( await screen.findByTestId("submit-btn") ); 
 
         await waitFor( ()=> screen.getByTestId("server-msg")); 
-        expect( screen.queryByTestId("server-msg")).toHaveTextContent("OK");
+        expect( screen.queryByTestId("server-msg")).not.toBeNull();
+    }
+); 
+
+test(
+    "should return the server msg (mock server)", 
+    async ()=>{
+        render(<Form url={url} />);
+        
+        fireEvent.click( await screen.findByTestId("submit-btn") ); 
+        await waitFor( ()=> screen.getByTestId("server-msg")); 
+        expect( screen.queryByTestId("server-msg")).toHaveTextContent(fakeData.msg);
     }
 ); 
