@@ -10,7 +10,6 @@ function App(props:any) {
 
   const loadMsg = async ()=>{
     try{
-
       const response = await fetch(props.url);
       const data = await response.json();
       setMsg(data.msg);

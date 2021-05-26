@@ -22,12 +22,12 @@ afterAll(() => server.close())
 test('loads and displays msg', async () => {
   render(<App url={url} />);
   await waitFor(() => screen.getByTestId('welcome-msg')); 
-  expect(screen.getByTestId('welcome-msg')).toHaveTextContent('hello there')
+  expect(screen.getByTestId('welcome-msg')).toHaveTextContent('hello there');
 });
 
 test('test toggle button label OK to KO', async () => {
   render(<App url={url} />);
-  fireEvent.click( screen.getByTestId("toggle-btn"));
+  fireEvent.click( screen.getByTestId("toggle-btn") );
   await waitFor(() => screen.getByTestId("toggle-btn")); 
   expect(screen.getByTestId("toggle-btn")).toHaveTextContent('KO');
 });
